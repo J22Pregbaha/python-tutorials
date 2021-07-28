@@ -1,0 +1,1 @@
+Hi there! This file is used to test the word count for files.
