@@ -3,9 +3,9 @@ print("Hi there! I'd like to get to know you")
 def get_name():
     name = input("First thing's first. What's your name? ")
     if name:
-        if name == "*":
+        if not check_name_is_ok(name):
             print("Come on, your real name\n")
-            get_dob()
+            get_name()
         else:
             return name
     else:
@@ -38,5 +38,16 @@ def get_goal():
 
 def biography():
     print(f'\nName: {get_name()}\nDate of birth: {get_dob()}\nAddress: {get_address()}\nPersonal goals: {get_goal()}')
+
+def check_name_is_ok(name):
+    analphabeticList = [" ", ".", ",", ":", ";", "!", "?", "'", "\"", "*"]
+    count = 0
+    for character in analphabeticList:
+        if character in name:
+            count += 1
+    if count > 0:
+        return False
+    else:
+        return True
 
 biography()
