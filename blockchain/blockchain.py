@@ -33,10 +33,12 @@ class Blockchain:
             current = self.chain[i]
             previous = self.chain[i - 1]
             # If the current hash isn't correct the blockchain is invalid
-            if not current.hash == current.generate_hash():
+            if current.hash != current.generate_hash():
+                print("The current hash of the block does not equal the generated hash of the block.")
                 return False
 
             # If the previous hash isn't correct the blockchain is invalid
-            if not current.previous_hash == previous.generate_hash():
+            if current.previous_hash != previous.generate_hash():
+                print("The previous block's hash does not equal the previous hash value stored in the current block.")
                 return False
         return True
