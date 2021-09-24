@@ -42,3 +42,17 @@ class Blockchain:
                 print("The previous block's hash does not equal the previous hash value stored in the current block.")
                 return False
         return True
+
+    def proof_of_work(self, block, difficulty=2):
+        not_yet = True
+        while not_yet:
+            proof = block.generate_hash()
+            # Check if the first two (because the current difficulty is 2) characters are numbers and check if they are 0
+            # If they are then return False to show that we've found the correct proof
+            if proof[0:difficulty].isnumeric():
+                if int(proof[0:difficulty]) == 0:
+                    not_yet = False
+
+            block.nonce = block.nonce + 1
+        block.nonce = 0
+        return proof
