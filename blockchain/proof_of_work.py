@@ -20,11 +20,11 @@ not_yet = True
 while not_yet:
     transaction = str(new_transactions) + str(nonce)
     proof = sha256(transaction.encode()).hexdigest()
-    nonce = nonce + 1
     if proof[0:difficulty].isnumeric():
         if int(proof[0:difficulty]) == 0:
             final_proof = proof
             not_yet = False
+    nonce = nonce + 1
 
 # printing final proof that was found
 print(final_proof)
