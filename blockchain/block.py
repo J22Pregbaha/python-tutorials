@@ -22,3 +22,9 @@ class Block:
         # hash the blocks contents
         block_hash = sha256(block_contents.encode())
         return block_hash.hexdigest()
+
+    def print_contents(self):
+        print("timestamp:", self.time_stamp)
+        print("transactions:", self.transactions)
+        print("current hash:", self.generate_hash())
+        print("previous hash:", self.previous_hash)
