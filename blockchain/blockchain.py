@@ -21,10 +21,22 @@ class Blockchain:
             print("Block {} {}".format(i, current_block))
             current_block.print_contents()
 
-    # add block to blockchain `chain`
+            # add block to blockchain `chain`
+
     def add_block(self, transactions):
         previous_block_hash = self.chain[len(self.chain) - 1].hash
         new_block = Block(transactions, previous_block_hash)
         self.chain.append(new_block)
-        return self.chain
 
+    def validate_chain(self):
+        for i in range(1, len(self.chain)):
+            current = self.chain[i]
+            previous = self.chain[i - 1]
+            # If the current hash isn't correct the blockchain is invalid
+            if not current.hash == current.generate_hash():
+                return False
+
+            # If the previous hash isn't correct the blockchain is invalid
+            if not current.previous_hash == previous.generate_hash():
+                return False
+        return True
