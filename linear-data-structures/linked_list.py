@@ -35,8 +35,58 @@ class LinkedList:
                 current_node = current_node.get_next_node()
         return string_list
 
+    # Returns data at given index in linked list
+    def get_nth(self, index):
+        current = self.get_head_node()  # Initialise temp
+        count = 0  # Index of current node
+
+        # Loop while end of linked list is not reached
+        while current:
+            if count == index:
+                return current.get_value()
+            count += 1
+            current = current.get_next_node()
+
+        # if we get to this line, the caller was asking
+        # for a non-existent element so we assert fail
+        assert false
+        return 0
+
+    def remove_node(self, value_to_remove):
+        current_node = self.get_head_node()
+        # Before traversing, check if it's the head_node being removed.
+        # If it is, set the second node as the head node
+        if current_node.get_value() == value_to_remove:
+            self.head_node = current_node.get_next_node()
+        else:
+            while current_node:
+                next_node = current_node.get_next_node()
+                if next_node.get_value() == value_to_remove:
+                    current_node.set_next_node(next_node.get_next_node())
+                    current_node = None
+                else:
+                    current_node = next_node
+
+    def remove_nodes(self, value_to_remove):
+        current_node = self.get_head_node()
+        if current_node.get_value() == value_to_remove:
+            self.head_node = current_node.get_next_node()
+
+        while current_node:
+            next_node = current_node.get_next_node()
+            if next_node is not None:
+                if next_node.get_value() == value_to_remove:
+                    current_node.set_next_node(next_node.get_next_node())
+                    continue
+                else:
+                    current_node = next_node
+            else:
+                current_node = None
+
 ll = LinkedList(5)
-ll.insert_beginning(70)
+ll.insert_beginning("Hey")
 ll.insert_beginning(5675)
+ll.insert_beginning("Hey")
 ll.insert_beginning(90)
+ll.remove_nodes("Hey")
 print(ll.stringify_list())
