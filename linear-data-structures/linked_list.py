@@ -69,8 +69,9 @@ class LinkedList:
 
     def remove_nodes(self, value_to_remove):
         current_node = self.get_head_node()
-        if current_node.get_value() == value_to_remove:
+        while current_node.get_value() == value_to_remove:
             self.head_node = current_node.get_next_node()
+            current_node = self.get_head_node()
 
         while current_node:
             next_node = current_node.get_next_node()
@@ -95,5 +96,7 @@ a = Node(5)
 b = Node(70, a)
 c = Node(5675, b)
 d = Node(90, c)
-ff = LinkedList(d)
+e = Node(90, d)
+ff = LinkedList(e)
+ff.remove_nodes(90)
 print(ff.stringify_list())
