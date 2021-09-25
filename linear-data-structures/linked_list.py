@@ -15,7 +15,7 @@ class Node:
 
 class LinkedList:
     def __init__(self, value=None):
-        self.head_node = Node(value)
+        self.head_node = value
 
     def get_head_node(self):
         return self.head_node
@@ -83,10 +83,17 @@ class LinkedList:
             else:
                 current_node = None
 
-ll = LinkedList(5)
-ll.insert_beginning("Hey")
-ll.insert_beginning(5675)
-ll.insert_beginning("Hey")
-ll.insert_beginning(90)
-ll.remove_nodes("Hey")
-print(ll.stringify_list())
+# ll = LinkedList(5)
+# ll.insert_beginning("Hey")
+# ll.insert_beginning(5675)
+# ll.insert_beginning("Hey")
+# ll.insert_beginning(90)
+# ll.remove_nodes("Hey")
+#print(ll.stringify_list())
+
+a = Node(5)
+b = Node(70, a)
+c = Node(5675, b)
+d = Node(90, c)
+ff = LinkedList(d)
+print(ff.stringify_list())
