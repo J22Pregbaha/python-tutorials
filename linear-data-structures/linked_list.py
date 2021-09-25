@@ -19,3 +19,24 @@ class LinkedList:
 
     def get_head_node(self):
         return self.head_node
+
+    # Insert new head node
+    def insert_beginning(self, new_value):
+        new_node = Node(new_value) # instantiate a Node with new_value. Name this new_node
+        new_node.set_next_node(self.head_node) # link new_node to the existing head_node
+        self.head_node = new_node # replace the current head_node with new_node
+
+    def stringify_list(self):
+        string_list = ""
+        current_node = self.get_head_node()
+        while current_node:
+            if current_node.get_value() is not None:
+                string_list += str(current_node.get_value()) + "\n"
+                current_node = current_node.get_next_node()
+        return string_list
+
+ll = LinkedList(5)
+ll.insert_beginning(70)
+ll.insert_beginning(5675)
+ll.insert_beginning(90)
+print(ll.stringify_list())
