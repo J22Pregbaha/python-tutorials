@@ -8,21 +8,31 @@ class Stack:
         self.limit = limit
 
     def push(self, value):
-        item = Node(value)
-        item.set_next_node(self.top_item)
-        self.top_item = item
+        if self.has_space():
+            item = Node(value)
+            item.set_next_node(self.top_item)
+            self.top_item = item
+            self.size += 1
+        else:
+            return "All out of space!"
 
     def pop(self):
-        if self.size > 0:
+        if self.is_empty():
             item_to_remove = self.top_item
             self.top_item = item_to_remove.get_next_node()
             self.size -= 1
             return item_to_remove.get_value()
         else:
-            return "Stack is empty"
+            print("This stack is totally empty.")
 
     def peek(self):
-        if self.size > 0:
+        if self.is_empty():
             return self.top_item.get_value()
         else:
-            return "Stack is empty"
+            print("Nothing to see here!")
+
+    def has_space(self):
+        return self.limit > self.size
+
+    def is_empty(self):
+        return self.size == 0
