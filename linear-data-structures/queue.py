@@ -59,3 +59,8 @@ class Queue:
 
     def is_empty(self):
         return self.get_size() == 0
+
+q = Queue(1)
+q.enqueue("some guy with a mustache")
+q.enqueue("some guy with a mustachio")
+q.dequeue()
