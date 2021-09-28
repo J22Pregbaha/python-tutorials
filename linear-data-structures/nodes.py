@@ -21,7 +21,7 @@ yacko.set_link_node(dot)
 dot.set_link_node(wacko)
 # get dot‘s value from yacko
 dots_data = yacko.get_link_node().get_value()
-print(dots_data)
+# print(dots_data)
 # get wacko‘s value from dot
 wackos_data = dot.get_link_node().get_value()
-print(wackos_data)
+# print(wackos_data)
