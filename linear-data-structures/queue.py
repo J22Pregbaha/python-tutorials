@@ -8,10 +8,28 @@ class Queue:
         self.max_size = max_size
         self.size = 0
 
+    def enqueue(self, value):
+        # Check if there's space in the queue
+        if self.has_space():
+            item_to_add = Node(value)
+            print("Adding " + str(item_to_add.get_value()) + " to the queue!")
+            # Check if the queue is empty
+            # If it is, the new item becomes the head and the tail
+            # If it isn't, it just becomes the new tail
+            if self.is_empty():
+                self.head = item_to_add
+                self.tail = item_to_add
+            else:
+                self.tail.set_next_node(item_to_add)
+                self.tail = item_to_add
+            self.size += 1
+        else:
+            print("Sorry, no more room!")
+
     def peek(self):
-        if self.get_size() > 0:
-            return self.head.get_value()
-        print("Nothing to see here!")
+        if self.is_empty():
+            print("Nothing to see here!")
+        return self.head.get_value()
 
     def get_size(self):
         return self.size
