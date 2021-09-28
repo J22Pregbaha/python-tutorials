@@ -26,6 +26,24 @@ class Queue:
         else:
             print("Sorry, no more room!")
 
+    def dequeue(self):
+        # Check if the queue isn't empty
+        if not self.is_empty():
+            item_to_remove = self.head
+            print("Removing " + str(item_to_remove.get_value()) + " from the queue!")
+            # Check if there's only one item in the queue
+            # If there is, set the head and tail to None
+            # If there isn't, set the head to the second item in the queue
+            if self.get_size() == 1:
+                self.head = None
+                self.tail = None
+            else:
+                self.head = self.head.get_next_node()
+            self.size -= 1
+            return item_to_remove.get_value()
+        else:
+            print("This queue is totally empty!")
+
     def peek(self):
         if self.is_empty():
             print("Nothing to see here!")
