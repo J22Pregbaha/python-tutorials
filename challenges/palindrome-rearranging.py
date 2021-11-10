@@ -2,7 +2,7 @@
 def palindromeRearranging(inputString):
     # count the number of each individual character
     # can form a palindrome only if:
-    #   at most one of the character counts is odd, all others must be even
+    # only one character is allowed to appear an odd number of times. The others must have an even count
 
     string_array = list(inputString)
     chars = set(string_array)
